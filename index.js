@@ -2,18 +2,14 @@
 const str2fn = require('str2fn');
 
 const register = function(server, options) {
-  Object.keys(options.events).forEach(eventName => {
-    server.events.on(eventName, (data) => {
-      const methods = options.events[eventName];
-      methods.forEach(methodName => {
-        // todo: str2fn currently uses a callback instead of async/await:
-        str2fn.execute(methodName, server.methods, data, (err, result) => {
-          if (err) {
-            return server.log(err);
-          }
-          server.log(['hapi-method-events', eventName, methodName], result);
-        });
-      });
+  options.events.forEach(eventData => {
+    server.events.on(eventData.event, async(data) => {
+      try {
+        await str2fn.execute(eventData.method, server.methods, data);
+      } catch (err) {
+        return server.log(err);
+      }
+      server.log(['hapi-method-events', event.method], result);
     });
   });
 };
