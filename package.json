@@ -1,0 +1,29 @@
+{
+  "name": "hapi-method-events",
+  "description": "Hapi plugin to execute a method when an event fires",
+  "homepage": "https://github.com/firstandthird/hapi-method-events",
+  "author": "First+Third",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/firstandthird/hapi-method-events.git"
+  },
+  "scripts": {
+    "test": "tap test",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "hapi",
+    "events"
+  ],
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-config-firstandthird": "^4.3.0",
+    "eslint-plugin-import": "^2.8.0",
+    "hapi": "^17.2.0",
+    "tap": "^11.0.1"
+  },
+  "dependencies": {
+    "str2fn": "^2.0.0"
+  }
+}
