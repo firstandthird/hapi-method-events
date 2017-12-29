@@ -3,7 +3,7 @@
   "description": "Hapi plugin to execute a method when an event fires",
   "homepage": "https://github.com/firstandthird/hapi-method-events",
   "author": "First+Third",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/firstandthird/hapi-method-events.git"
