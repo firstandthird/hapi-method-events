@@ -5,11 +5,11 @@ const register = function(server, options) {
   options.events.forEach(eventData => {
     server.events.on(eventData.event, async(data) => {
       try {
-        await str2fn.execute(eventData.method, server.methods, data);
+        const result = await str2fn.execute(eventData.method, server.methods, data);
+        server.log(['hapi-method-events', eventData.method], result);
       } catch (err) {
         return server.log(err);
       }
-      server.log(['hapi-method-events', event.method], result);
     });
   });
 };

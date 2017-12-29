@@ -45,7 +45,7 @@ tap.test('will call functions on an event registered with an object', async t =>
   const server = new hapi.Server({
     debug: { log: ['hapi-method-events'] },
   });
-  t.plan(2);
+  t.plan(1);
   await server.register({
     plugin,
     options: {
@@ -68,6 +68,7 @@ tap.test('will call functions on an event registered with an object', async t =>
       throw new Error('death');
     }
   })
+  await server.inject({ url: '/' });
   t.equal(count, 1);
   await server.stop();
   t.end();
