@@ -92,7 +92,6 @@ tap.test('will report errors when thrown', async t => {
       }]
     }
   });
-  let count = 0;
   await server.start();
   server.route({
     path: '/',
