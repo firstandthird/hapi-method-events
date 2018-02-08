@@ -73,3 +73,35 @@ tap.test('will call functions on an event registered with an object', async t =>
   await server.stop();
   t.end();
 });
+
+tap.test('will report errors when thrown', async t => {
+  const server = new hapi.Server({
+    debug: { log: ['hapi-method-events'] },
+  });
+  t.plan(1);
+  let called = false;
+  server.events.on('log', (input) => {
+    called = input;
+  });
+  await server.register({
+    plugin,
+    options: {
+      events: [{
+        event: { channels: 'error', name: 'request' },
+        method: 'blahblahblahNo(user._id)'
+      }]
+    }
+  });
+  await server.start();
+  server.route({
+    path: '/',
+    method: 'get',
+    handler(request, h) {
+      throw new Error('death');
+    }
+  })
+  await server.inject({ url: '/' });
+  t.deepEqual(Object.keys(called), ['timestamp', 'tags', 'error', 'channel']);
+  await server.stop();
+  t.end();
+});
