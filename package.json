@@ -17,13 +17,13 @@
     "events"
   ],
   "devDependencies": {
-    "eslint": "^4.13.1",
+    "eslint": "^5.16.0",
     "eslint-config-firstandthird": "^4.3.0",
     "eslint-plugin-import": "^2.8.0",
-    "hapi": "^17.2.0",
-    "tap": "^11.0.1"
+    "@hapi/hapi": "^18.3.1",
+    "tap": "^13.1.2"
   },
   "dependencies": {
-    "str2fn": "^3.0.0"
+    "str2fn": "^5.0.0"
   }
 }

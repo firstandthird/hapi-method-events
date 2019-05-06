@@ -6,7 +6,7 @@ const register = function(server, options) {
     server.events.on(eventData.event, async(data) => {
       const eventName = typeof eventData.event === 'object' ? eventData.event.name : eventData.event;
       try {
-        const result = await str2fn.execute(eventData.method, server.methods, data);
+        const result = await str2fn(eventData.method, server.methods, data);
         if (options.verbose) {
           server.log(['hapi-method-events', eventName, eventData.method], result);
         }
