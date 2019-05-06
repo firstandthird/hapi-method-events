@@ -1,5 +1,5 @@
 const tap = require('tap');
-const hapi = require('hapi');
+const hapi = require('@hapi/hapi');
 const plugin = require('../index.js');
 
 tap.test('will call functions on a named event with the correct parameters', async t => {
@@ -51,7 +51,7 @@ tap.test('will call functions on an event registered with an object', async t =>
     options: {
       events: [{
         event: { channels: 'error', name: 'request' },
-        method: 'addToMailchimp(user._id)'
+        method: 'addToMailchimp()'
       }]
     }
   });
